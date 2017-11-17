@@ -54,3 +54,10 @@ Esta librería utiliza un conjunto de método fijos que automatizan las operacio
 - public object Deserialize(Byte[] Obj)
     * Parámetros:
         + object Obj: objeto serializado al que se aplica deserialización para devolverlo a su formato original.
+        
+# Formato de procedimientos almacenados requerido WS_GENERIC_DB
+    * Para devolución de DataSet
+    
+    
+    * Para operaciones de actualización de base de datos (INSERT, UPDATE, DELETE)
+

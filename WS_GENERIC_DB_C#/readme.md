@@ -58,6 +58,42 @@ Esta librería utiliza un conjunto de método fijos que automatizan las operacio
 # Formato de procedimientos almacenados requerido WS_GENERIC_DB
     * Para devolución de DataSet
     
+      CREATE PROCEDURE [dbo].[nombre_procedimiento_almacenado]
+         @param1 as varchar(8),
+         @param2 as varchar(5)
+      AS
+      ----------------------------------------------------------
+      --AUTOR		: IVAN SALDIVAR RODRIGUEZ
+      --FECHA		: 2017-11-03
+      --OBJETIVO	: 
+      ----------------------------------------------------------
+      BEGIN
+         BEGIN TRY
+            SET NOCOUNT ON;
+
+            SELECT     
+               campo1, 
+               campo2
+            FROM [dbo].[tabla1]
+            WHERE 
+               (llave1 = @param1) 
+            AND (llave2 = @param2);
+
+            SET NOCOUNT OFF;
+         END TRY	
+         BEGIN CATCH
+            SELECT  
+               -1 AS REGISTRO_ACTUALIZADO, 
+               ERROR_PROCEDURE() AS ERROR_PROCEDURE_,  
+               ERROR_NUMBER() AS ERROR_NUMBER_,  
+               ERROR_MESSAGE() AS ERROR_MESSAGE_,  
+               ERROR_LINE() AS ERROR_LINE_;
+			
+            RETURN 0;
+         END CATCH
+         RETURN 1;
+    END
+    GO
     
     * Para operaciones de actualización de base de datos (INSERT, UPDATE, DELETE)
 

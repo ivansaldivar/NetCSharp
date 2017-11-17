@@ -55,7 +55,7 @@ Esta librería utiliza un conjunto de método fijos que automatizan las operacio
     * Parámetros:
         + object Obj: objeto serializado al que se aplica deserialización para devolverlo a su formato original.
         
-# Formato de procedimientos almacenados requerido WS_GENERIC_DB
+# Formato de procedimientos almacenados requerido WS_GENERIC_DB (ejemplos)
     * Para devolución de DataSet
     
       CREATE PROCEDURE [dbo].[nombre_procedimiento_almacenado]
@@ -97,3 +97,44 @@ Esta librería utiliza un conjunto de método fijos que automatizan las operacio
     
     * Para operaciones de actualización de base de datos (INSERT, UPDATE, DELETE)
 
+      CREATE PROCEDURE [dbo].[nombre_procedimiento_almacenado_CRUD]
+         @param1 as varchar(8),
+         @param2 as varchar(5)
+      AS
+      ----------------------------------------------------------
+      --AUTOR		: IVAN SALDIVAR RODRIGUEZ
+      --FECHA		: 2017-11-03
+      --OBJETIVO	: 
+      ----------------------------------------------------------
+      BEGIN
+         BEGIN TRY
+            SET NOCOUNT ON;
+            DECLARE @ident as int;
+	    
+            INSER INTO [dbo].[tabla1]( campo1,  campo2 )
+            VALUES(@param1, @param2);
+
+            SET @ident= @@IDENTITY;
+		
+            SELECT  
+               -1@ident AS REGISTRO_ACTUALIZADO, 
+               '' AS ERROR_PROCEDURE_,  
+               0 AS ERROR_NUMBER_,  
+               '' AS ERROR_MESSAGE_,  
+               0 AS ERROR_LINE_;
+
+            SET NOCOUNT OFF;
+         END TRY	
+         BEGIN CATCH
+            SELECT  
+               -1 AS REGISTRO_ACTUALIZADO, 
+               ERROR_PROCEDURE() AS ERROR_PROCEDURE_,  
+               ERROR_NUMBER() AS ERROR_NUMBER_,  
+               ERROR_MESSAGE() AS ERROR_MESSAGE_,  
+               ERROR_LINE() AS ERROR_LINE_;
+			
+            RETURN 0;
+         END CATCH
+         RETURN 1;
+    END
+    GO

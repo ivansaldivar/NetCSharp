@@ -6,10 +6,14 @@ Esta librería utiliza un conjunto de método fijos que automatizan las operacio
 
 # Métodos
 
-1 public Byte[] CONSULTA_GENERICA_SP_SERIALIZADA(Byte[] NOMBRESP, Byte[] XMLParams, string vConnectionString)
-2 public Byte[] CONSULTA_GENERICA_SP2_SERIALIZADA(Byte[] NOMBRESP, Byte[] XMLParams, string vConnectionString)
-3 public Byte[] CONSULTA_GENERICA_SP3_SERIALIZADA(Byte[] NOMBRESP, Byte[] XMLParams, Byte[] XMLDetalle, string vConnectionString)
-4 public Byte[] CONSULTA_GENERICA_SP4_SERIALIZADA(Byte[] NOMBRESP, Byte[] XMLParams, Byte[] XMLDetalle, Byte[] ObjetoBinario, string vConnectionString)
-5 public Boolean CargaParametrosSP(SqlCommand cmd, String XMLParams)
-6 public Byte[] Serialize(object Obj, Boolean AsByte)
-7 public object Deserialize(Byte[] Obj)
+- public Byte[] CONSULTA_GENERICA_SP_SERIALIZADA(Byte[] NOMBRESP, Byte[] XMLParams, string vConnectionString)
+        Byte[] NOMBRESP: Nombre del procedimiento almacenado.
+        Byte[] XMLParams: conjunto de parámetros del procedimiento pasado en formato XML.
+        string vConnectionString: cadena de conexión a la base de datos.
+      
+- public Byte[] CONSULTA_GENERICA_SP2_SERIALIZADA(Byte[] NOMBRESP, Byte[] XMLParams, string vConnectionString)
+- public Byte[] CONSULTA_GENERICA_SP3_SERIALIZADA(Byte[] NOMBRESP, Byte[] XMLParams, Byte[] XMLDetalle, string vConnectionString)
+- public Byte[] CONSULTA_GENERICA_SP4_SERIALIZADA(Byte[] NOMBRESP, Byte[] XMLParams, Byte[] XMLDetalle, Byte[] ObjetoBinario, string vConnectionString)
+- public Boolean CargaParametrosSP(SqlCommand cmd, String XMLParams)
+- public Byte[] Serialize(object Obj, Boolean AsByte)
+- public object Deserialize(Byte[] Obj)

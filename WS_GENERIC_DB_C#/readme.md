@@ -116,8 +116,10 @@ Esta librería utiliza un conjunto de método fijos que automatizan las operacio
 
             SET @ident= @@IDENTITY;
 		
+	    --se puede devolver un campo llave o un valor positivo
+	    --específico que sirva para determinar un comportamiento dado.
             SELECT  
-               -1@ident AS REGISTRO_ACTUALIZADO, 
+               @ident AS REGISTRO_ACTUALIZADO, 
                '' AS ERROR_PROCEDURE_,  
                0 AS ERROR_NUMBER_,  
                '' AS ERROR_MESSAGE_,  
